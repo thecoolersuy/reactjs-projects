@@ -1,4 +1,4 @@
-import {useState, useCallback,useEffect} from 'react'
+import {useState, useCallback,useEffect,useRef} from 'react'
 
 
 function App() {
@@ -6,6 +6,8 @@ function App() {
   const [ number , setNumber] = useState(false)
   const [ char , setChar] = useState(false)
   const [ password, setPassword] = useState("")
+  const [copy , setCopied] = useState("copy")
+  const passwordRef = useRef(null)
 
   const passwordGenerator=useCallback(()=>{
     let pass =""
@@ -24,7 +26,13 @@ function App() {
 
   } ,[length,number,char]) 
 
+  const copytoclipboard =  () =>{
+    setCopied("copied")
+    passwordRef.current.select()
+    window.navigator.clipboard.writeText(password)
+  }
 
+ 
 
   useEffect( ()=>{
     passwordGenerator()
@@ -37,8 +45,8 @@ function App() {
         <h1 className ="text-4xl text-white text-center p-10 ">Random Password Generator</h1>
         <div className="bg-gray-800 fixed top-30 inset-x-50 p-5 flex flex-col items-center">
           <div className="flex items-center gap-3">
-             <input className="border-2 bg-amber-50" type="text" value = {password} placeholder="Password will be displayed here" readOnly></input>
-             <button className = "bg-blue-500 text-white px-3 ml-3">copy</button><br></br><br></br>
+             <input className="border-2 bg-amber-50" type="text" value = {password} placeholder="Password will be displayed here" readOnly ref={passwordRef}></input>
+             <button className = "bg-blue-500 text-white px-3 ml-3" onClick={copytoclipboard}>{copy}</button><br></br><br></br>
           </div>
           <div className="flex items-center gap-3">
              <input  type="range" min={6} max={50} value={length} onChange={(e)=>{ setLength(e.target.value) }}></input>
