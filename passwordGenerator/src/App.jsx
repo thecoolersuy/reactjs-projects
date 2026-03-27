@@ -32,11 +32,16 @@ function App() {
     window.navigator.clipboard.writeText(password)
   }
 
+  const resetButton = () =>{
+    setCopied("copy")
+  }
+
  
 
   useEffect( ()=>{
+    resetButton()
     passwordGenerator()
-  }, [ length, number,char,passwordGenerator])
+  }, [ length, number,char,passwordGenerator ])
 
   
   return (

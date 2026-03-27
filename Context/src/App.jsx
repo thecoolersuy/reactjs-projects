@@ -1,0 +1,22 @@
+
+import Login from "./components/Login"
+import Profile from "./components/Profile"
+
+
+
+function App() {
+
+  return (
+    <>
+     <h1>Context Concepts</h1><br></br><br></br>
+     <p>What does Context API do? If we need a prop called username in Card.jsx components we need to pass it down
+        form its parent componenets like Leftdiv.jsx, Home.jsx So we need to pass the username prop through these components which doesnt need that prop
+        So context api makes a global variable where the username is defined there so Cards.jsx can simple access the global variable instaed of prop drilling
+     </p>
+     <Login />
+     <Profile />
+    </>
+  )
+}
+
+export default App

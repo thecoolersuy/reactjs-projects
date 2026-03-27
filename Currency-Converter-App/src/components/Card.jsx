@@ -9,7 +9,7 @@ function Card({
     currencyDisable = false
 
 }){
-    
+    const countryCode = selectCurrency.slice(0, 2).toLowerCase()
 
     return(
         <>
@@ -18,10 +18,11 @@ function Card({
                 <label className="text-2xl text-[#072621] font-bold">{medium}</label>
                 <label className="text-2xl text-[#072621] font-bold">Currency Type</label>
              </div>
-             <div className="flex flex-row gap-12" >
-                <input type="number" className="text-xl text-[#072621] border-2 rounded-2xl font-bold" 
+             <div className="flex flex-row gap-2" >
+                <input type="number" className="text-xl text-[#072621] border-2 rounded-2xl font-bold " 
                 value={amount} disabled={amountDisable} 
                 onChange={(e)=>onAmountChange(e.target.value)} ></input>
+                <img src={`https://flagcdn.com/w40/${countryCode}.png`} width="45" height="30" alt={selectCurrency}/>
                 <select className="text-2xl text-[#072621] font-bold" value={selectCurrency}
                 onChange={(e) =>onCurrencyChange && onCurrencyChange(e.target.value)}
                 disabled={currencyDisable}>

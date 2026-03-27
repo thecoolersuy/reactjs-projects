@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 import { Card } from "./components/index.js"
-import useCurrencyInfo from "../src/customhooks/useCurrencyInfo.js"
+import useCurrencyInfo from "./customhooks/useCurrencyInfo"
 
 function App() {
   
