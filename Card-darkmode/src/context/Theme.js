@@ -10,7 +10,7 @@ export const ThemeContext = createContext({
 export const ThemeContextProvider = ThemeContext.Provider
 
 const useTheme = () =>{
-    useContext(ThemeContext)
+    return useContext(ThemeContext)
 }
 
 export default useTheme;
